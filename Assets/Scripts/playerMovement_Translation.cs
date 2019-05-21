@@ -26,7 +26,10 @@ public class playerMovement_Translation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             direction = !direction;
+            transform.rotation =transform.rotation * Quaternion.Euler(180f, 0f, 0f);
+
             
+
         }
 
     }
@@ -39,12 +42,12 @@ public class playerMovement_Translation : MonoBehaviour
 
         if (direction)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(new Vector3(0, transform.position.y, 0) * speed * Time.deltaTime);
         }
         else
         {
 
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
+            transform.Translate(new Vector3(0, transform.position.y, 0) * speed * Time.deltaTime);
 
         }
        
