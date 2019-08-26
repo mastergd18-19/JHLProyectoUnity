@@ -17,20 +17,17 @@ public class playerMovement_Translation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            direction = !direction;
+            transform.rotation = transform.rotation * Quaternion.Euler(180f, 0f, 0f);                       
+        }
     }
 
     private void FixedUpdate()
     {
         Movement();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            direction = !direction;
-            transform.rotation =transform.rotation * Quaternion.Euler(180f, 0f, 0f);
-
-            
-
-        }
+        
 
     }
 
