@@ -19,9 +19,6 @@ public class TriggerDeath : MonoBehaviour
 
     private void OnTriggerEnter(Collider player)
     {
-        if (player.tag == "Player")
-        {
-
-        }
+        Debug.Log("entró");
     }
 }
