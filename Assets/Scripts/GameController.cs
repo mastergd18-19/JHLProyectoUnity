@@ -7,18 +7,44 @@ public class GameController : MonoBehaviour
 {
 
     public Canvas canvas;
+    public GameObject Obstacle;
+    public Vector3 Spawnvalues;
+    public int ObstacleCount;
+    public float Spawnwait;
+    public float Startwait;
+    
+
+   
     // Start is called before the first frame update
     void Start()
     {
         canvas.gameObject.SetActive(false);
+        StartCoroutine(spawnwaves());
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider Player)
     {
+        canvas.gameObject.SetActive(true);
+    }
+
+    IEnumerator spawnwaves()
+    {
+        yield return new WaitForSeconds(Startwait);
+
+        while (true)
+        {
+            for (int i = 0; i < ObstacleCount; i++)
+            {
+                Vector3 Spawnposition = new Vector3(Spawnvalues.x, Spawnvalues.y, Random.Range(0, 18));
+                Quaternion Spawnrotation = Quaternion.identity;
+                Instantiate(Obstacle, Spawnposition, Spawnrotation);
+                Debug.Log("spawn");                
+            }
+            yield return new WaitForSeconds(Spawnwait);
+        }
         
     }
 
-
+    
 
 }
