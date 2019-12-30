@@ -10,6 +10,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene01()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Menu");
     }
 }

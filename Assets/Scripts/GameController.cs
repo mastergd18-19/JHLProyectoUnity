@@ -12,9 +12,11 @@ public class GameController : MonoBehaviour
     public int ObstacleCount;
     public float Spawnwait;
     public float Startwait;
-    
+    public GameObject clone;
+    public GameObject obj;
 
-   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,10 @@ public class GameController : MonoBehaviour
         StartCoroutine(spawnwaves());
     }
 
-    void OnTriggerEnter(Collider Player)
+    /*void OnTriggerEnter(Collider Player)
     {
         canvas.gameObject.SetActive(true);
-    }
+    }*/
 
     IEnumerator spawnwaves()
     {
@@ -37,14 +39,13 @@ public class GameController : MonoBehaviour
             {
                 Vector3 Spawnposition = new Vector3(Spawnvalues.x, Spawnvalues.y, Random.Range(0, 18));
                 Quaternion Spawnrotation = Quaternion.identity;
-                Instantiate(Obstacle, Spawnposition, Spawnrotation);
+                clone = Instantiate(Obstacle, Spawnposition, Spawnrotation);
                 Debug.Log("spawn");                
             }
             yield return new WaitForSeconds(Spawnwait);
         }
-        
+
     }
 
     
-
 }
